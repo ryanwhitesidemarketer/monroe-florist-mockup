@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monroe MI Florist Since 1976 | Same-Day Flower Delivery in Monroe, Michigan</title>
+<meta name="description" content="Monroe Florist & Flower Delivery — your real local florist in Monroe, Michigan since 1976. Hand-designed bouquets, same-day delivery when you order by 3 PM. Voted #1 in Monroe.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap');
+  :root{
+    --green:#3f5340;        /* deep sage */
+    --green-soft:#6f8a6b;
+    --sage:#eef2ea;         /* pale sage bg */
+    --sage-2:#e2ebdd;
+    --blush:#f4e7e6;
+    --blush-deep:#caa39c;
+    --terracotta:#c47b63;
+    --ink:#2c322c;
+    --muted:#6a726a;
+    --line:#e3e6df;
+    --gold:#b8924a;
+    --white:#fffefb;
+    --radius:14px;
+    --shadow:0 6px 24px rgba(48,60,46,.10);
+    --shadow-lg:0 18px 50px rgba(48,60,46,.16);
+    --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--white);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.12;color:var(--green)}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+  .eyebrow{font-family:var(--sans);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--terracotta)}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-weight:600;font-size:.95rem;padding:.85rem 1.7rem;border-radius:999px;border:1.5px solid transparent;cursor:pointer;transition:.18s;white-space:nowrap}
+  .btn-primary{background:var(--green);color:#fff}
+  .btn-primary:hover{background:#33422f;transform:translateY(-1px)}
+  .btn-outline{background:transparent;border-color:var(--green);color:var(--green)}
+  .btn-outline:hover{background:var(--green);color:#fff}
+  .btn-light{background:#fff;color:var(--green)}
+  .btn-light:hover{background:var(--sage)}
+
+  /* ---------- Announcement / utility bar ---------- */
+  .topbar{background:var(--green);color:#eaf0e6;font-size:.82rem;text-align:center;padding:.5rem 1rem;font-weight:500;letter-spacing:.01em}
+  .topbar strong{color:#fff}
+
+  /* ---------- Header ---------- */
+  header{position:sticky;top:0;z-index:60;background:rgba(255,254,251,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:.85rem 0;gap:1rem}
+  .brand{display:flex;flex-direction:column;line-height:1}
+  .brand .name{font-family:var(--serif);font-size:1.5rem;font-weight:600;color:var(--green)}
+  .brand .sub{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+  .nav-links{display:flex;gap:1.6rem;font-size:.9rem;font-weight:500}
+  .nav-links a{color:var(--ink);transition:.15s}
+  .nav-links a:hover{color:var(--terracotta)}
+  .nav-right{display:flex;align-items:center;gap:1rem}
+  .phone{font-weight:700;color:var(--green);font-size:.95rem;white-space:nowrap}
+  .phone span{font-weight:400;color:var(--muted);font-size:.78rem;display:block;letter-spacing:.04em}
+  @media(max-width:920px){.nav-links{display:none}}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;background:linear-gradient(105deg,var(--sage) 0 52%,var(--blush) 100%);overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:2.5rem;align-items:center;padding:3.4rem 0 3.6rem}
+  .hero-copy .eyebrow{margin-bottom:1rem;display:inline-block}
+  .hero h1{font-size:3.5rem;margin-bottom:1.1rem}
+  .hero h1 em{font-style:italic;color:var(--terracotta)}
+  .hero p.lead{font-size:1.12rem;color:#4c544c;max-width:30em;margin-bottom:1.5rem}
+  .hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center}
+  .trust-row{display:flex;gap:1.4rem;margin-top:1.8rem;flex-wrap:wrap}
+  .trust-row .ti{display:flex;align-items:center;gap:.5rem;font-size:.85rem;font-weight:600;color:var(--green)}
+  .trust-row .ti svg{width:18px;height:18px;flex:none}
+  .stars{color:var(--gold);letter-spacing:1px}
+  /* hero image collage */
+  .hero-media{position:relative;min-height:380px}
+  .hero-media .ph{position:absolute;border-radius:18px;box-shadow:var(--shadow-lg);background-size:cover;background-position:center}
+  .hero-media .ph1{width:62%;height:78%;top:8%;right:6%;background-image:linear-gradient(135deg,#d99,#caa39c)}
+  .hero-media .ph2{width:46%;height:54%;bottom:0;left:0;background-image:linear-gradient(135deg,#9fb38f,#6f8a6b);border:5px solid #fff}
+  /* countdown badge floating on hero */
+  .cutoff{position:absolute;left:2%;top:6%;z-index:5;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:.9rem 1.1rem;display:flex;align-items:center;gap:.75rem;max-width:255px}
+  .cutoff .dot{width:10px;height:10px;border-radius:50%;background:#3fae5a;box-shadow:0 0 0 4px rgba(63,174,90,.18);flex:none;animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .cutoff .ctxt{font-size:.78rem;line-height:1.3;color:var(--muted)}
+  .cutoff .ctxt b{display:block;color:var(--ink);font-size:.9rem}
+  .cutoff #clock{font-variant-numeric:tabular-nums;color:var(--terracotta);font-weight:700}
+  @media(max-width:820px){
+    .hero-grid{grid-template-columns:1fr;padding:2.2rem 0 2.4rem}
+    .hero h1{font-size:2.5rem}
+    .hero-media{min-height:300px;order:-1}
+    .cutoff{position:static;max-width:none;margin-bottom:1.2rem}
+  }
+
+  /* ---------- Section scaffolding ---------- */
+  section{padding:4rem 0}
+  .sec-head{text-align:center;max-width:40rem;margin:0 auto 2.4rem}
+  .sec-head h2{font-size:2.4rem;margin-bottom:.5rem}
+  .sec-head p{color:var(--muted)}
+
+  /* ---------- Products ---------- */
+  .filters{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
+  .chip{font-size:.82rem;font-weight:600;padding:.45rem 1.05rem;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;transition:.15s}
+  .chip.active,.chip:hover{background:var(--green);color:#fff;border-color:var(--green)}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
+  @media(max-width:980px){.grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:720px){.grid{grid-template-columns:repeat(2,1fr);gap:1rem}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.2s;display:flex;flex-direction:column}
+  .card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+  .card .pic{aspect-ratio:4/5;background-size:cover;background-position:center;position:relative}
+  .card .tag{position:absolute;top:.65rem;left:.65rem;background:rgba(255,255,255,.93);color:var(--terracotta);font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.28rem .6rem;border-radius:999px}
+  .card .body{padding:.85rem .9rem 1rem;display:flex;flex-direction:column;gap:.55rem;flex:1}
+  .card .pname{font-family:var(--serif);font-size:1.22rem;font-weight:600;color:var(--ink);line-height:1.1}
+  .card .price{font-weight:700;color:var(--green);font-size:1rem}
+  .card .add{margin-top:auto;font-size:.82rem;font-weight:600;text-align:center;border:1.5px solid var(--green);color:var(--green);border-radius:999px;padding:.5rem;transition:.15s;cursor:pointer}
+  .card:hover .add{background:var(--green);color:#fff}
+  .shopall{text-align:center;margin-top:2.2rem}
+
+  /* ---------- Reasons / Why us ---------- */
+  .why{background:var(--sage)}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.3rem}
+  @media(max-width:860px){.why-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.why-grid{grid-template-columns:1fr}}
+  .why-card{background:#fff;border-radius:var(--radius);padding:1.6rem 1.3rem;text-align:center;border:1px solid var(--line)}
+  .why-card .ic{width:46px;height:46px;margin:0 auto .9rem;border-radius:50%;background:var(--sage-2);display:flex;align-items:center;justify-content:center}
+  .why-card .ic svg{width:24px;height:24px;color:var(--green)}
+  .why-card h3{font-size:1.32rem;margin-bottom:.35rem}
+  .why-card p{font-size:.88rem;color:var(--muted);line-height:1.5}
+
+  /* ---------- Areas we serve ---------- */
+  .areas-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:1.3rem;margin-bottom:1.6rem}
+  @media(max-width:860px){.areas-grid{grid-template-columns:1fr}}
+  .area-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem 1.4rem}
+  .area-card h3{font-size:1.25rem;display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem}
+  .area-card h3 svg{width:20px;height:20px;color:var(--terracotta)}
+  .area-card .note{font-size:.82rem;color:var(--muted);margin-bottom:.9rem}
+  .pills{display:flex;flex-wrap:wrap;gap:.4rem}
+  .pill{font-size:.78rem;background:var(--sage);color:var(--green);font-weight:500;padding:.32rem .7rem;border-radius:999px}
+  .area-list{list-style:none;font-size:.88rem;color:var(--ink)}
+  .area-list li{padding:.4rem 0;border-bottom:1px dashed var(--line);display:flex;align-items:center;gap:.5rem}
+  .area-list li:last-child{border-bottom:0}
+  .area-list li svg{width:15px;height:15px;color:var(--green-soft);flex:none}
+  /* zip checker */
+  .zip{background:var(--green);border-radius:var(--radius);padding:1.5rem 1.6rem;display:flex;align-items:center;justify-content:space-between;gap:1.2rem;flex-wrap:wrap;color:#eef2ea}
+  .zip h3{color:#fff;font-size:1.5rem;margin-bottom:.2rem}
+  .zip p{font-size:.85rem;opacity:.85}
+  .zip-form{display:flex;gap:.5rem;background:#fff;padding:.35rem;border-radius:999px}
+  .zip-form input{border:0;outline:0;padding:.55rem .9rem;font-size:.95rem;width:150px;font-family:var(--sans);border-radius:999px}
+  .zip-result{font-size:.9rem;font-weight:600;margin-top:.7rem;min-height:1.2em}
+
+  /* ---------- FAQ ---------- */
+  .faq{background:var(--sage)}
+  .faq-wrap{max-width:760px;margin:0 auto}
+  .faq-item{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:.75rem;overflow:hidden}
+  .faq-q{width:100%;text-align:left;background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:1.02rem;font-weight:600;color:var(--green);padding:1.15rem 1.3rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+  .faq-q .pm{font-size:1.4rem;color:var(--terracotta);transition:.2s;flex:none;line-height:1}
+  .faq-item.open .faq-q .pm{transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .28s ease;color:var(--muted);font-size:.92rem}
+  .faq-a div{padding:0 1.3rem 1.2rem}
+  .faq-item.open .faq-a{max-height:240px}
+
+  /* ---------- Final CTA band ---------- */
+  .cta-band{background:linear-gradient(105deg,var(--green),#33422f);color:#eef2ea;text-align:center;border-radius:0}
+  .cta-band h2{color:#fff;font-size:2.5rem;margin-bottom:.6rem}
+  .cta-band p{opacity:.9;max-width:34rem;margin:0 auto 1.6rem}
+  .cta-band .btn-light{font-size:1.05rem;padding:1rem 2.4rem}
+
+  /* ---------- Footer ---------- */
+  footer{background:#2c322c;color:#b9c2b6;font-size:.86rem;padding:3rem 0 2rem}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:1.6rem;margin-bottom:2rem}
+  @media(max-width:760px){.foot-grid{grid-template-columns:1fr 1fr}}
+  footer h4{color:#fff;font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.9rem}
+  footer a{display:block;padding:.22rem 0;color:#b9c2b6;transition:.15s}
+  footer a:hover{color:#fff}
+  .foot-brand .name{font-family:var(--serif);font-size:1.5rem;color:#fff}
+  .foot-brand p{margin-top:.6rem;line-height:1.6}
+  .foot-bottom{border-top:1px solid #424a41;padding-top:1.3rem;text-align:center;font-size:.78rem;color:#8b948a}
+
+  /* ---------- Sticky Shop Now ---------- */
+  .sticky-shop{position:fixed;right:20px;bottom:22px;z-index:80;box-shadow:var(--shadow-lg);opacity:0;visibility:hidden;transform:translateY(14px);transition:.25s}
+  .sticky-shop.show{opacity:1;visibility:visible;transform:none}
+  .sticky-shop .btn{font-size:1rem;padding:.95rem 1.7rem}
+  @media(max-width:520px){.sticky-shop{right:14px;bottom:14px}}
+
+  .mock-note{background:#fff7e6;border:1px dashed var(--gold);color:#8a6d2a;font-size:.78rem;text-align:center;padding:.5rem;font-weight:500}
+</style>
+</head>
+<body>
+
+<div class="mock-note">DESIGN MOCKUP — Monroe Florist homepage concept. Product names &amp; prices are live from monroeflorist.biz; photos are placeholders.</div>
+
+<!-- Utility bar -->
+<div class="topbar">🚚 <strong>Same-day delivery</strong> in Monroe, MI &amp; nearby towns — order by <strong>3:00 PM</strong> today &nbsp;·&nbsp; Call <strong>(734) 242-6565</strong></div>
+
+<!-- Header -->
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <span class="name">Monroe Florist</span>
+      <span class="sub">Monroe, Michigan · Since 1976</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#products">Shop</a>
+      <a href="#why">Why Us</a>
+      <a href="#areas">Areas We Serve</a>
+      <a href="#faq">FAQ</a>
+      <a href="#products">Same-Day</a>
+    </nav>
+    <div class="nav-right">
+      <div class="phone">(734) 242-6565<span>Mon–Sat 8:30–6</span></div>
+      <a href="#products" class="btn btn-primary">Shop Now</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" style="padding:0">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Your Local Monroe, Michigan Florist</span>
+      <h1>Fresh Flowers, <em>Hand-Delivered</em> Across Monroe, MI</h1>
+      <p class="lead">For nearly 50 years, Monroe Florist &amp; Flower Delivery has hand-designed bouquets right here in Monroe, Michigan — and delivered them the same day to homes, hospitals, and businesses across Monroe County. No plain shipping boxes. Just beautiful flowers, made and delivered by your neighbors.</p>
+      <div class="hero-cta">
+        <a href="#products" class="btn btn-primary">Shop Same-Day Flowers</a>
+        <a href="tel:7342426565" class="btn btn-outline">📞 Call to Order</a>
+      </div>
+      <div class="trust-row">
+        <div class="ti"><span class="stars">★★★★★</span> Voted #1 Florist in Monroe</div>
+        <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> 100% Satisfaction Guarantee</div>
+        <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.5 6.5L21 9l-5 4 1.8 7L12 16l-5.8 4L8 13 3 9l6.5-.5z"/></svg> Real Local Florist Since 1976</div>
+      </div>
+    </div>
+    <div class="hero-media">
+      <!-- Same-day cutoff countdown -->
+      <div class="cutoff">
+        <span class="dot"></span>
+        <div class="ctxt">
+          <b id="cutoff-line">Order in <span id="clock">2h 14m</span></b>
+          for same-day delivery in Monroe today
+        </div>
+      </div>
+      <div class="ph ph1" id="heroimg1"></div>
+      <div class="ph ph2" id="heroimg2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section id="products">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Made &amp; Delivered in Monroe</span>
+      <h2>Our Most Popular Bouquets</h2>
+      <p>Every arrangement below is hand-designed in our Monroe, MI shop and available for same-day local delivery when you order by 3 PM.</p>
+    </div>
+    <div class="filters">
+      <span class="chip active">Best Sellers</span>
+      <span class="chip">Birthday</span>
+      <span class="chip">Sympathy</span>
+      <span class="chip">Anniversary</span>
+      <span class="chip">Just Because</span>
+      <span class="chip">Under $75</span>
+    </div>
+    <div class="grid" id="prodgrid"></div>
+    <div class="shopall"><a href="#products" class="btn btn-outline">See All Flowers &nbsp;→</a></div>
+  </div>
+</section>
+
+<!-- Why us -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">The Monroe Florist Difference</span>
+      <h2>Why Monroe Sends With Us</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18M5 7l1 13h12l1-13M9 7V5a3 3 0 0 1 6 0v2"/></svg></div>
+        <h3>A Real Local Shop</h3>
+        <p>We're a true Monroe, MI florist — not an online order-gatherer. Your flowers are designed and hand-delivered by our own team.</p>
+      </div>
+      <div class="why-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>Same-Day Delivery</h3>
+        <p>Order by 3 PM and we'll deliver fresh flowers across Monroe today — perfect for last-minute birthdays and surprises.</p>
+      </div>
+      <div class="why-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.5-9 9-9 9z"/></svg></div>
+        <h3>Hand-Designed Daily</h3>
+        <p>Fresh blooms arranged by hand every morning — no plain boxes, no mass-shipped stems. Just artistry that arrives beautiful.</p>
+      </div>
+      <div class="why-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4"/><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></svg></div>
+        <h3>100% Guaranteed</h3>
+        <p>Voted Monroe's #1 florist. If you're ever not completely happy with your order, we'll make it right — every time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Areas we serve -->
+<section id="areas">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">We Know Monroe County</span>
+      <h2>Areas We Serve</h2>
+      <p>Our drivers know Monroe's streets, hospitals, and funeral homes by heart — so your flowers arrive on time, to the right door.</p>
+    </div>
+    <div class="areas-grid">
+      <div class="area-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg> Towns We Deliver To</h3>
+        <p class="note">Same-day local delivery — $14.95 per address.</p>
+        <div class="pills">
+          <span class="pill">Monroe</span><span class="pill">Dundee</span><span class="pill">Ida</span>
+          <span class="pill">Lambertville</span><span class="pill">Temperance</span><span class="pill">Flat Rock</span>
+          <span class="pill">Newport</span><span class="pill">Carleton</span><span class="pill">Luna Pier</span>
+          <span class="pill">LaSalle</span><span class="pill">Maybee</span><span class="pill">Rockwood</span>
+          <span class="pill">Erie</span><span class="pill">Petersburg</span><span class="pill">Bedford</span>
+        </div>
+      </div>
+      <div class="area-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg> Hospitals &amp; Care</h3>
+        <p class="note">We deliver bedside cheer, fast and discreet.</p>
+        <ul class="area-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> ProMedica Monroe Regional Hospital</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Family Medical Center of Michigan</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Local senior &amp; rehab facilities</li>
+        </ul>
+      </div>
+      <div class="area-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v6c0 5-3.5 7.5-8 8-4.5-.5-8-3-8-8V7z"/></svg> Funeral Homes</h3>
+        <p class="note">Sympathy &amp; service arrangements, delivered with care.</p>
+        <ul class="area-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Merkle Funeral Service</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Rupp Funeral Home</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Bacarella &amp; Capaul Funeral Homes</li>
+        </ul>
+      </div>
+    </div>
+    <!-- ZIP checker -->
+    <div class="zip">
+      <div>
+        <h3>Do we deliver to your ZIP?</h3>
+        <p>Check instantly before you shop. We cover 48161, 48162, 48166, 48117, 48159 and more.</p>
+      </div>
+      <div>
+        <div class="zip-form">
+          <input id="zipin" type="text" inputmode="numeric" maxlength="5" placeholder="Enter ZIP code" aria-label="ZIP code">
+          <button class="btn btn-primary" onclick="checkZip()">Check</button>
+        </div>
+        <div class="zip-result" id="zipres"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Good to Know</span>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-wrap" id="faqwrap"></div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Send Flowers in Monroe Today</h2>
+    <p>Order by 3 PM for same-day delivery across Monroe, Michigan. Hand-designed, hand-delivered, and 100% guaranteed.</p>
+    <a href="#top" class="btn btn-light" onclick="scrollTop(event)">⬆ Shop Now</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="name">Monroe Florist</span>
+        <p>Monroe Florist &amp; Flower Delivery<br>747 S Monroe St, Monroe, MI 48161<br><a href="tel:7342426565" style="display:inline;color:#fff;font-weight:600">(734) 242-6565</a></p>
+        <p style="margin-top:.6rem;font-size:.8rem">Mon–Sat 8:30 AM–6:00 PM · Closed Sunday</p>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <a href="#products">Best Sellers</a><a href="#products">Birthday</a>
+        <a href="#products">Sympathy</a><a href="#products">Wedding</a><a href="#products">Plants &amp; Gifts</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#why">About Us</a><a href="#areas">Where We Deliver</a>
+        <a href="#faq">FAQ</a><a href="#">Delivery Policy</a>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <a href="tel:7342426565">Call Us</a><a href="#">Contact</a>
+        <a href="#">Substitutions</a><a href="#">Satisfaction Guarantee</a>
+      </div>
+    </div>
+    <div class="foot-bottom">Serving Monroe, Michigan &amp; Monroe County since 1976 · Voted #1 Florist in Monroe · © 2026 Monroe Florist &amp; Flower Delivery</div>
+  </div>
+</footer>
+
+<!-- Sticky Shop Now (jumps back up to products) -->
+<a href="#products" class="sticky-shop" id="stickyShop"><span class="btn btn-primary">🛒 Shop Now</span></a>
+
+<a id="top"></a>
+
+<script>
+/* ---------- Product data (live names + prices from monroeflorist.biz) ---------- */
+const products = [
+  {name:"Garden Party", price:"152.99", tag:"Premium", hue:"#c98aa0,#9a5b74"},
+  {name:"Cottage Lane", price:"122.99", tag:"Best Seller", hue:"#e0a86b,#c47b63"},
+  {name:"Skyfall", price:"108.99", tag:"", hue:"#8fb0c9,#5d7f9a"},
+  {name:"Cherry Birch", price:"87.99", tag:"", hue:"#d98a86,#a85c63"},
+  {name:"Teal Radiance", price:"86.99", tag:"Best Seller", hue:"#6fb3a8,#3f7d77"},
+  {name:"Uniquely Bloomed", price:"77.99", tag:"", hue:"#cf94b4,#9a5b8a"},
+  {name:"Summer Winds", price:"73.99", tag:"", hue:"#e3c069,#c79a3f"},
+  {name:"Cherry Blossoms", price:"72.99", tag:"Seasonal", hue:"#f0b8c4,#d98aa0"},
+  {name:"Rosy Rory", price:"67.99", tag:"Best Seller", hue:"#d97f8f,#b05566"},
+  {name:"Sunkissed", price:"65.99", tag:"", hue:"#f0b15e,#e08a3f"},
+  {name:"Breezy", price:"62.99", tag:"", hue:"#a9c79a,#7ba36b"},
+  {name:"Designer's Choice — Spring", price:"49.99", tag:"Florist's Pick", hue:"#c4a6cf,#9a7bb0"}
+];
+const grid = document.getElementById('prodgrid');
+grid.innerHTML = products.map(p=>`
+  <div class="card">
+    <div class="pic" style="background-image:linear-gradient(135deg,${p.hue})">
+      ${p.tag?`<span class="tag">${p.tag}</span>`:''}
+    </div>
+    <div class="body">
+      <div class="pname">${p.name}</div>
+      <div class="price">$${p.price}</div>
+      <div class="add">Add to Cart</div>
+    </div>
+  </div>`).join('');
+
+/* hero placeholder gradients */
+document.getElementById('heroimg1').style.backgroundImage="linear-gradient(135deg,#e3a9b4,#caa39c)";
+document.getElementById('heroimg2').style.backgroundImage="linear-gradient(135deg,#a9c79a,#6f8a6b)";
+
+/* ---------- FAQ accordion ---------- */
+const faqs = [
+  {q:"Do you offer same-day flower delivery in Monroe, MI?",
+   a:"Yes! Place your order by 3:00 PM and we'll hand-deliver fresh flowers the same day across Monroe and nearby towns — ideal for birthdays, anniversaries, and last-minute surprises. Orders after 3 PM deliver the next day."},
+  {q:"Which areas and ZIP codes do you deliver to?",
+   a:"We deliver throughout Monroe County — Monroe, Dundee, Ida, Lambertville, Temperance, Flat Rock, Newport, Carleton, Luna Pier, LaSalle, Maybee, Rockwood, Erie, and Petersburg — including ZIPs 48161, 48162, 48166, 48117, 48159, 48145, 48144, 48157, 48182, 48140, 48133, and 48131."},
+  {q:"How much does local delivery cost?",
+   a:"Local delivery is a flat $14.95 per address. You'll see the exact total at checkout before you pay — no surprises."},
+  {q:"Are you a real local florist or an online middleman?",
+   a:"We're a real shop right here in Monroe, Michigan, family-serving the community since 1976. Every arrangement is hand-designed in our store and delivered by our own drivers — never shipped in a plain box from out of state."},
+  {q:"Can I request specific flowers, colors, or a custom arrangement?",
+   a:"Absolutely. Tell us your favorite blooms or color palette in the order notes, or call (734) 242-6565 to speak with a designer. While some flowers are seasonal, we'll always match the style and value you're after."}
+];
+const fw = document.getElementById('faqwrap');
+fw.innerHTML = faqs.map((f,i)=>`
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(${i})">${f.q}<span class="pm">+</span></button>
+    <div class="faq-a"><div>${f.a}</div></div>
+  </div>`).join('');
+function toggleFaq(i){
+  const items=document.querySelectorAll('.faq-item');
+  items[i].classList.toggle('open');
+}
+
+/* ---------- Same-day cutoff countdown ---------- */
+function updateClock(){
+  const now=new Date();
+  const day=now.getDay(); // 0 Sun ... 6 Sat
+  const cutoff=new Date(now); cutoff.setHours(15,0,0,0); // 3:00 PM
+  const line=document.getElementById('cutoff-line');
+  const clock=document.getElementById('clock');
+  if(day===0){ // Sunday closed
+    line.innerHTML="Order now — delivers Monday";
+    return;
+  }
+  const diff=cutoff-now;
+  if(diff>0){
+    const h=Math.floor(diff/3600000);
+    const m=Math.floor((diff%3600000)/60000);
+    const s=Math.floor((diff%60000)/1000);
+    clock.textContent = h>0 ? `${h}h ${m}m ${s}s` : `${m}m ${s}s`;
+    line.firstChild.textContent="Order in ";
+  }else{
+    line.innerHTML="Order now for next-day delivery";
+  }
+}
+setInterval(updateClock,1000); updateClock();
+
+/* ---------- ZIP checker ---------- */
+const zips=["48161","48162","48166","48117","48159","48145","48144","48157","48182","48140","48133","49020","49270","48131"];
+function checkZip(){
+  const v=document.getElementById('zipin').value.trim();
+  const r=document.getElementById('zipres');
+  if(!/^\d{5}$/.test(v)){r.style.color="#caa39c";r.textContent="Please enter a 5-digit ZIP.";return;}
+  if(zips.includes(v)){r.style.color="#bfe3c0";r.innerHTML="✓ Yes! We deliver to "+v+" — same-day if you order by 3 PM.";}
+  else{r.style.color="#f0d28a";r.innerHTML="We may still reach you — call (734) 242-6565 to confirm "+v+".";}
+}
+
+/* ---------- Sticky Shop Now visibility + scroll to top ---------- */
+const sticky=document.getElementById('stickyShop');
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>700) sticky.classList.add('show');
+  else sticky.classList.remove('show');
+});
+function scrollTop(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});}
+
+/* ---------- Product filter chips (visual only in mockup) ---------- */
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',function(){
+  document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
+  this.classList.add('active');
+}));
+</script>
+</body>
+</html>
