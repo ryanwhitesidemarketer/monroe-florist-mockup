@@ -135,7 +135,7 @@
   .card .price{font-weight:700;color:var(--green);font-size:1rem}
   .card .add{margin-top:auto;font-size:.82rem;font-weight:600;text-align:center;border:1.5px solid var(--green);color:var(--green);border-radius:999px;padding:.5rem;transition:.15s;cursor:pointer}
   .card:hover .add{background:var(--green);color:#fff}
-  .shopall{text-align:center;margin-top:2.2rem}
+  .shopall{display:flex;flex-direction:column;align-items:center;gap:.7rem;margin-top:2.2rem}
 
   /* ---------- Reasons / Why us ---------- */
   .why{background:var(--sage)}
@@ -207,8 +207,6 @@
 </style>
 </head>
 <body>
-
-<div class="mock-note">DESIGN MOCKUP — Valentine’s Day seasonal preview (simulating 8 days before Valentine’s). Product names &amp; prices are live from monroeflorist.biz.</div>
 
 <!-- Utility bar -->
 <div class="topbar">💝 <strong>Valentine’s Day is 8 days away</strong> — order early for guaranteed delivery in Monroe &nbsp;·&nbsp; Call <strong>(734) 242-6565</strong></div>
@@ -302,7 +300,10 @@
       <span class="chip" data-filter="under75">Under $75</span>
     </div>
     <div class="grid" id="prodgrid"></div>
-    <div class="shopall"><a href="#products" class="btn btn-outline">See All Flowers &nbsp;→</a></div>
+    <div class="shopall">
+      <a href="summer-flowers/" class="btn btn-primary" id="catCta">Shop All Summer Flowers &nbsp;→</a>
+      <a href="shop/" class="btn btn-outline">See All Flowers &nbsp;→</a>
+    </div>
   </div>
 </section>
 
@@ -377,20 +378,6 @@
         </ul>
       </div>
     </div>
-    <!-- ZIP checker -->
-    <div class="zip">
-      <div>
-        <h3>Do we deliver to your ZIP?</h3>
-        <p>Check instantly before you shop. We cover 48161, 48162, 48166, 48117, 48159 and more.</p>
-      </div>
-      <div>
-        <div class="zip-form">
-          <input id="zipin" type="text" inputmode="numeric" maxlength="5" placeholder="Enter ZIP code" aria-label="ZIP code">
-          <button class="btn btn-primary" onclick="checkZip()">Check</button>
-        </div>
-        <div class="zip-result" id="zipres"></div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -410,7 +397,7 @@
   <div class="wrap">
     <h2>Send Flowers in Monroe Today</h2>
     <p>Order by 3 PM for same-day delivery across Monroe, Michigan. Hand-designed, hand-delivered, and 100% guaranteed.</p>
-    <a href="#top" class="btn btn-light" onclick="scrollTop(event)">⬆ Shop Now</a>
+    <a href="#products" class="btn btn-light">⬆ Shop Now</a>
   </div>
 </section>
 
@@ -489,9 +476,13 @@ function cardHTML(p){return `
       <div class="add">Add to Cart</div>
     </div>
   </div>`;}
+const CAT_LABEL = {summer:"Summer Flowers", best:"Best Sellers", birthday:"Birthday Flowers", sympathy:"Sympathy Flowers", anniversary:"Anniversary Flowers", just:"Just Because Flowers", under75:"Flowers Under $75", valentines:"Valentine's Day Flowers"};
+const CAT_URL = {summer:"summer-flowers/", best:"best-sellers/", birthday:"birthday-flowers/", sympathy:"sympathy-flowers/", anniversary:"anniversary-flowers/", just:"just-because/", under75:"flowers-under-75/", valentines:"valentines-day/"};
 function renderProducts(filter){
   const list = products.filter(p => p.cats.includes(filter));
   grid.innerHTML = list.map(cardHTML).join('');
+  const cta=document.getElementById('catCta');
+  if(cta){ cta.textContent="Shop All "+(CAT_LABEL[filter]||"Flowers")+"  →"; cta.href=CAT_URL[filter]||"shop/"; }
 }
 const DEFAULT_FILTER = "valentines";
 function gotoFilter(f){
@@ -596,17 +587,7 @@ function updateClock(){
 }
 setInterval(updateClock,1000); updateClock();
 
-/* ---------- ZIP checker ---------- */
-const zips=["48161","48162","48166","48117","48159","48145","48144","48157","48182","48140","48133","49020","49270","48131"];
-function checkZip(){
-  const v=document.getElementById('zipin').value.trim();
-  const r=document.getElementById('zipres');
-  if(!/^\d{5}$/.test(v)){r.style.color="#caa39c";r.textContent="Please enter a 5-digit ZIP.";return;}
-  if(zips.includes(v)){r.style.color="#bfe3c0";r.innerHTML="✓ Yes! We deliver to "+v+" — same-day if you order by 3 PM.";}
-  else{r.style.color="#f0d28a";r.innerHTML="We may still reach you — call (734) 242-6565 to confirm "+v+".";}
-}
-
-/* ---------- Sticky Shop Now visibility + scroll to top ---------- */
+/* ---------- Sticky Shop Now visibility ---------- */
 const sticky=document.getElementById('stickyShop');
 window.addEventListener('scroll',()=>{
   if(window.scrollY>700) sticky.classList.add('show');
