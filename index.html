@@ -106,7 +106,9 @@
   @media(max-width:720px){.grid{grid-template-columns:repeat(2,1fr);gap:1rem}}
   .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.2s;display:flex;flex-direction:column}
   .card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
-  .card .pic{aspect-ratio:4/5;background-size:cover;background-position:center;position:relative}
+  .card .pic{aspect-ratio:4/5;background-size:cover;background-position:center;position:relative;overflow:hidden}
+  .card .pic .pimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .35s}
+  .card:hover .pic .pimg{transform:scale(1.04)}
   .card .tag{position:absolute;top:.65rem;left:.65rem;background:rgba(255,255,255,.93);color:var(--terracotta);font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.28rem .6rem;border-radius:999px}
   .card .body{padding:.85rem .9rem 1rem;display:flex;flex-direction:column;gap:.55rem;flex:1}
   .card .pname{font-family:var(--serif);font-size:1.22rem;font-weight:600;color:var(--ink);line-height:1.1}
@@ -409,24 +411,26 @@
 
 <script>
 /* ---------- Product data (live names + prices from monroeflorist.biz) ---------- */
+const EF="https://assets.eflorist.com/site/EF-12776/assets/products/PHR_/";
 const products = [
-  {name:"Garden Party", price:"152.99", tag:"Premium", hue:"#c98aa0,#9a5b74"},
-  {name:"Cottage Lane", price:"122.99", tag:"Best Seller", hue:"#e0a86b,#c47b63"},
-  {name:"Skyfall", price:"108.99", tag:"", hue:"#8fb0c9,#5d7f9a"},
-  {name:"Cherry Birch", price:"87.99", tag:"", hue:"#d98a86,#a85c63"},
-  {name:"Teal Radiance", price:"86.99", tag:"Best Seller", hue:"#6fb3a8,#3f7d77"},
-  {name:"Uniquely Bloomed", price:"77.99", tag:"", hue:"#cf94b4,#9a5b8a"},
-  {name:"Summer Winds", price:"73.99", tag:"", hue:"#e3c069,#c79a3f"},
-  {name:"Cherry Blossoms", price:"72.99", tag:"Seasonal", hue:"#f0b8c4,#d98aa0"},
-  {name:"Rosy Rory", price:"67.99", tag:"Best Seller", hue:"#d97f8f,#b05566"},
-  {name:"Sunkissed", price:"65.99", tag:"", hue:"#f0b15e,#e08a3f"},
-  {name:"Breezy", price:"62.99", tag:"", hue:"#a9c79a,#7ba36b"},
-  {name:"Designer's Choice — Spring", price:"49.99", tag:"Florist's Pick", hue:"#c4a6cf,#9a7bb0"}
+  {name:"Garden Party", price:"152.99", tag:"Premium", hue:"#c98aa0,#9a5b74", img:EF+"sku15080083.jpg"},
+  {name:"Cottage Lane", price:"122.99", tag:"Best Seller", hue:"#e0a86b,#c47b63", img:EF+"skusku13840049.jpg"},
+  {name:"Skyfall", price:"108.99", tag:"", hue:"#8fb0c9,#5d7f9a", img:EF+"sku15080095.jpg"},
+  {name:"Cherry Birch", price:"87.99", tag:"", hue:"#d98a86,#a85c63", img:EF+"sku15190086.jpg"},
+  {name:"Teal Radiance", price:"86.99", tag:"Best Seller", hue:"#6fb3a8,#3f7d77", img:EF+"sku15190084.jpg"},
+  {name:"Uniquely Bloomed", price:"77.99", tag:"", hue:"#cf94b4,#9a5b8a", img:EF+"skusku14582222.jpg"},
+  {name:"Summer Winds", price:"73.99", tag:"", hue:"#e3c069,#c79a3f", img:EF+"skusku12840488.jpg"},
+  {name:"Cherry Blossoms", price:"72.99", tag:"Seasonal", hue:"#f0b8c4,#d98aa0", img:EF+"skusku12770930.jpg"},
+  {name:"Rosy Rory", price:"67.99", tag:"Best Seller", hue:"#d97f8f,#b05566", img:EF+"skusku14582396.jpg"},
+  {name:"Sunkissed", price:"65.99", tag:"", hue:"#f0b15e,#e08a3f", img:EF+"skusku10501332.jpg"},
+  {name:"Breezy", price:"62.99", tag:"", hue:"#a9c79a,#7ba36b", img:EF+"skusku12840496.jpg"},
+  {name:"Designer's Choice — Spring", price:"49.99", tag:"Florist's Pick", hue:"#c4a6cf,#9a7bb0", img:"https://assets.eflorist.com/site/75411600/assets/products/PHR_/sku10140055.jpg"}
 ];
 const grid = document.getElementById('prodgrid');
 grid.innerHTML = products.map(p=>`
   <div class="card">
     <div class="pic" style="background-image:linear-gradient(135deg,${p.hue})">
+      <img class="pimg" src="${p.img}" alt="${p.name} bouquet" loading="lazy" onerror="this.remove()">
       ${p.tag?`<span class="tag">${p.tag}</span>`:''}
     </div>
     <div class="body">
@@ -436,9 +440,17 @@ grid.innerHTML = products.map(p=>`
     </div>
   </div>`).join('');
 
-/* hero placeholder gradients */
-document.getElementById('heroimg1').style.backgroundImage="linear-gradient(135deg,#e3a9b4,#caa39c)";
-document.getElementById('heroimg2').style.backgroundImage="linear-gradient(135deg,#a9c79a,#6f8a6b)";
+/* hero photos (real arrangements, fall back to gradient on error) */
+(function(){
+  const h1=document.getElementById('heroimg1'), h2=document.getElementById('heroimg2');
+  h1.style.backgroundImage="linear-gradient(135deg,#e3a9b4,#caa39c)";
+  h2.style.backgroundImage="linear-gradient(135deg,#a9c79a,#6f8a6b)";
+  [[h1,EF+"sku15080083.jpg"],[h2,EF+"skusku14582396.jpg"]].forEach(([el,src])=>{
+    const im=new Image();
+    im.onload=()=>{el.style.backgroundImage=`url('${src}')`;};
+    im.src=src;
+  });
+})();
 
 /* ---------- FAQ accordion ---------- */
 const faqs = [
