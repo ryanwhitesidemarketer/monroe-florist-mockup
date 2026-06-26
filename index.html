@@ -72,11 +72,10 @@
   .trust-row .ti{display:flex;align-items:center;gap:.5rem;font-size:.85rem;font-weight:600;color:var(--green)}
   .trust-row .ti svg{width:18px;height:18px;flex:none}
   .stars{color:var(--gold);letter-spacing:1px}
-  /* hero image collage */
-  .hero-media{position:relative;min-height:380px}
-  .hero-media .ph{position:absolute;border-radius:18px;box-shadow:var(--shadow-lg);background-size:cover;background-position:center}
-  .hero-media .ph1{width:62%;height:78%;top:8%;right:6%;background-image:linear-gradient(135deg,#d99,#caa39c)}
-  .hero-media .ph2{width:46%;height:54%;bottom:0;left:0;background-image:linear-gradient(135deg,#9fb38f,#6f8a6b);border:5px solid #fff}
+  /* hero localized delivery illustration */
+  .hero-media{position:relative;min-height:380px;display:flex;align-items:center}
+  .hero-art{position:relative;width:100%;border-radius:22px;overflow:hidden;box-shadow:var(--shadow-lg);background:linear-gradient(150deg,#eef2ea 0%,#e7eee2 45%,#f4e7e6 100%);aspect-ratio:6/5}
+  .hero-art svg{display:block;width:100%;height:100%}
   /* countdown badge floating on hero */
   .cutoff{position:absolute;left:2%;top:6%;z-index:5;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:.9rem 1.1rem;display:flex;align-items:center;gap:.75rem;max-width:255px}
   .cutoff .dot{width:10px;height:10px;border-radius:50%;background:#3fae5a;box-shadow:0 0 0 4px rgba(63,174,90,.18);flex:none;animation:pulse 1.6s infinite}
@@ -240,8 +239,79 @@
           for same-day delivery in Monroe today
         </div>
       </div>
-      <div class="ph ph1" id="heroimg1"></div>
-      <div class="ph ph2" id="heroimg2"></div>
+      <div class="hero-art">
+        <svg viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Monroe Florist same-day delivery van in Monroe, Michigan">
+          <!-- soft decorative shapes -->
+          <circle cx="480" cy="130" r="150" fill="#f4e7e6" opacity=".55"/>
+          <circle cx="110" cy="400" r="120" fill="#dce7d4" opacity=".6"/>
+          <circle cx="520" cy="380" r="70" fill="#ead7d3" opacity=".5"/>
+          <!-- location pin -->
+          <g>
+            <path d="M300 52c20 0 35 15 35 35 0 26-35 63-35 63s-35-37-35-63c0-20 15-35 35-35z" fill="#c47b63"/>
+            <circle cx="300" cy="87" r="14" fill="#fffefb"/>
+            <circle cx="300" cy="87" r="6" fill="#c47b63"/>
+          </g>
+          <rect x="246" y="160" width="108" height="26" rx="13" fill="#fffefb" stroke="#e3e6df"/>
+          <text x="300" y="177" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#3f5340">MONROE, MI</text>
+          <!-- ground shadow -->
+          <ellipse cx="305" cy="392" rx="225" ry="24" fill="#000" opacity=".06"/>
+          <!-- motion lines -->
+          <g stroke="#6f8a6b" stroke-width="6" stroke-linecap="round" opacity=".35">
+            <line x1="70" y1="250" x2="120" y2="250"/>
+            <line x1="55" y1="285" x2="118" y2="285"/>
+            <line x1="74" y1="320" x2="120" y2="320"/>
+          </g>
+          <!-- bouquet peeking from back of van -->
+          <g>
+            <path d="M186 222c-4-26 6-44 6-44s12 16 10 40" fill="none" stroke="#5b7a52" stroke-width="5" stroke-linecap="round"/>
+            <path d="M214 226c8-22 26-32 26-32s-2 20-16 36" fill="none" stroke="#5b7a52" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="190" cy="176" r="15" fill="#d97f8f"/>
+            <circle cx="216" cy="186" r="14" fill="#e6b84f"/>
+            <circle cx="171" cy="196" r="13" fill="#c98aa0"/>
+            <circle cx="205" cy="166" r="12" fill="#cf94b4"/>
+            <circle cx="190" cy="176" r="5" fill="#fffefb"/>
+            <circle cx="216" cy="186" r="5" fill="#fffefb"/>
+          </g>
+          <!-- van body -->
+          <g>
+            <!-- cargo box -->
+            <rect x="150" y="208" width="206" height="128" rx="16" fill="#3f5340"/>
+            <!-- cab -->
+            <path d="M356 226h44c30 0 52 22 64 52l12 30c5 12-4 26-17 26H356z" fill="#46583f"/>
+            <!-- windshield -->
+            <path d="M404 244h6c18 0 33 13 41 32h-47c-7 0-13-6-13-13v-12c0-4 3-7 13-7z" fill="#cfe0d6"/>
+            <!-- headlight + bumper -->
+            <rect x="470" y="312" width="16" height="14" rx="4" fill="#f0d28a"/>
+            <rect x="150" y="318" width="336" height="18" rx="9" fill="#33422f"/>
+            <!-- cream signage panel -->
+            <rect x="172" y="232" width="160" height="78" rx="12" fill="#fbf6ec"/>
+            <!-- little flower mark -->
+            <g transform="translate(200 268)">
+              <circle cx="0" cy="-11" r="7" fill="#d97f8f"/><circle cx="10" cy="-3" r="7" fill="#d97f8f"/><circle cx="6" cy="9" r="7" fill="#d97f8f"/><circle cx="-6" cy="9" r="7" fill="#d97f8f"/><circle cx="-10" cy="-3" r="7" fill="#d97f8f"/><circle cx="0" cy="0" r="6" fill="#e6b84f"/>
+            </g>
+            <text x="224" y="262" font-family="'Cormorant Garamond', Georgia, serif" font-size="26" font-weight="600" fill="#3f5340">Monroe Florist</text>
+            <text x="224" y="284" font-family="Inter, sans-serif" font-size="11" font-weight="600" letter-spacing="1.5" fill="#c47b63">SAME-DAY DELIVERY</text>
+            <text x="224" y="300" font-family="Inter, sans-serif" font-size="10.5" letter-spacing=".5" fill="#6a726a">(734) 242-6565 · Since 1976</text>
+            <!-- wheels -->
+            <g>
+              <circle cx="218" cy="336" r="34" fill="#2c322c"/>
+              <circle cx="218" cy="336" r="15" fill="#cfd8cd"/>
+              <circle cx="218" cy="336" r="6" fill="#3f5340"/>
+              <circle cx="418" cy="336" r="34" fill="#2c322c"/>
+              <circle cx="418" cy="336" r="15" fill="#cfd8cd"/>
+              <circle cx="418" cy="336" r="6" fill="#3f5340"/>
+            </g>
+          </g>
+          <!-- foreground sprigs -->
+          <g stroke="#7ba36b" stroke-width="4" stroke-linecap="round" fill="none" opacity=".8">
+            <path d="M40 470c10-26 4-50 4-50"/><path d="M44 446c-12-6-18-20-18-20"/><path d="M44 452c12-4 22-16 22-16"/>
+          </g>
+          <g>
+            <circle cx="556" cy="452" r="11" fill="#c98aa0"/><circle cx="556" cy="452" r="4" fill="#fffefb"/>
+            <circle cx="534" cy="466" r="9" fill="#e6b84f"/>
+          </g>
+        </svg>
+      </div>
     </div>
   </div>
 </section>
@@ -255,12 +325,12 @@
       <p>Every arrangement below is hand-designed in our Monroe, MI shop and available for same-day local delivery when you order by 3 PM.</p>
     </div>
     <div class="filters">
-      <span class="chip active">Best Sellers</span>
-      <span class="chip">Birthday</span>
-      <span class="chip">Sympathy</span>
-      <span class="chip">Anniversary</span>
-      <span class="chip">Just Because</span>
-      <span class="chip">Under $75</span>
+      <span class="chip active" data-filter="best">Best Sellers</span>
+      <span class="chip" data-filter="birthday">Birthday</span>
+      <span class="chip" data-filter="sympathy">Sympathy</span>
+      <span class="chip" data-filter="anniversary">Anniversary</span>
+      <span class="chip" data-filter="just">Just Because</span>
+      <span class="chip" data-filter="under75">Under $75</span>
     </div>
     <div class="grid" id="prodgrid"></div>
     <div class="shopall"><a href="#products" class="btn btn-outline">See All Flowers &nbsp;→</a></div>
@@ -413,21 +483,21 @@
 /* ---------- Product data (live names + prices from monroeflorist.biz) ---------- */
 const EF="https://assets.eflorist.com/site/EF-12776/assets/products/PHR_/";
 const products = [
-  {name:"Garden Party", price:"152.99", tag:"Premium", hue:"#c98aa0,#9a5b74", img:EF+"sku15080083.jpg"},
-  {name:"Cottage Lane", price:"122.99", tag:"Best Seller", hue:"#e0a86b,#c47b63", img:EF+"skusku13840049.jpg"},
-  {name:"Skyfall", price:"108.99", tag:"", hue:"#8fb0c9,#5d7f9a", img:EF+"sku15080095.jpg"},
-  {name:"Cherry Birch", price:"87.99", tag:"", hue:"#d98a86,#a85c63", img:EF+"sku15190086.jpg"},
-  {name:"Teal Radiance", price:"86.99", tag:"Best Seller", hue:"#6fb3a8,#3f7d77", img:EF+"sku15190084.jpg"},
-  {name:"Uniquely Bloomed", price:"77.99", tag:"", hue:"#cf94b4,#9a5b8a", img:EF+"skusku14582222.jpg"},
-  {name:"Summer Winds", price:"73.99", tag:"", hue:"#e3c069,#c79a3f", img:EF+"skusku12840488.jpg"},
-  {name:"Cherry Blossoms", price:"72.99", tag:"Seasonal", hue:"#f0b8c4,#d98aa0", img:EF+"skusku12770930.jpg"},
-  {name:"Rosy Rory", price:"67.99", tag:"Best Seller", hue:"#d97f8f,#b05566", img:EF+"skusku14582396.jpg"},
-  {name:"Sunkissed", price:"65.99", tag:"", hue:"#f0b15e,#e08a3f", img:EF+"skusku10501332.jpg"},
-  {name:"Breezy", price:"62.99", tag:"", hue:"#a9c79a,#7ba36b", img:EF+"skusku12840496.jpg"},
-  {name:"Designer's Choice — Spring", price:"49.99", tag:"Florist's Pick", hue:"#c4a6cf,#9a7bb0", img:"https://assets.eflorist.com/site/75411600/assets/products/PHR_/sku10140055.jpg"}
+  {name:"Garden Party", price:"152.99", tag:"Premium", hue:"#c98aa0,#9a5b74", img:EF+"sku15080083.jpg", cats:["best","anniversary","sympathy"]},
+  {name:"Cottage Lane", price:"122.99", tag:"Best Seller", hue:"#e0a86b,#c47b63", img:EF+"skusku13840049.jpg", cats:["best","birthday","just"]},
+  {name:"Skyfall", price:"108.99", tag:"", hue:"#8fb0c9,#5d7f9a", img:EF+"sku15080095.jpg", cats:["anniversary","sympathy"]},
+  {name:"Cherry Birch", price:"87.99", tag:"", hue:"#d98a86,#a85c63", img:EF+"sku15190086.jpg", cats:["best","birthday","just"]},
+  {name:"Teal Radiance", price:"86.99", tag:"Best Seller", hue:"#6fb3a8,#3f7d77", img:EF+"sku15190084.jpg", cats:["best","anniversary","sympathy"]},
+  {name:"Uniquely Bloomed", price:"77.99", tag:"", hue:"#cf94b4,#9a5b8a", img:EF+"skusku14582222.jpg", cats:["birthday","anniversary","just"]},
+  {name:"Summer Winds", price:"73.99", tag:"", hue:"#e3c069,#c79a3f", img:EF+"skusku12840488.jpg", cats:["birthday","just"]},
+  {name:"Cherry Blossoms", price:"72.99", tag:"Seasonal", hue:"#f0b8c4,#d98aa0", img:EF+"skusku12770930.jpg", cats:["sympathy","birthday"]},
+  {name:"Rosy Rory", price:"67.99", tag:"Best Seller", hue:"#d97f8f,#b05566", img:EF+"skusku14582396.jpg", cats:["best","anniversary"]},
+  {name:"Sunkissed", price:"65.99", tag:"", hue:"#f0b15e,#e08a3f", img:EF+"skusku10501332.jpg", cats:["best","birthday","just"]},
+  {name:"Breezy", price:"62.99", tag:"", hue:"#a9c79a,#7ba36b", img:EF+"skusku12840496.jpg", cats:["just","sympathy"]},
+  {name:"Designer's Choice — Spring", price:"49.99", tag:"Florist's Pick", hue:"#c4a6cf,#9a7bb0", img:"https://assets.eflorist.com/site/75411600/assets/products/PHR_/sku10140055.jpg", cats:["best","just"]}
 ];
 const grid = document.getElementById('prodgrid');
-grid.innerHTML = products.map(p=>`
+function cardHTML(p){return `
   <div class="card">
     <div class="pic" style="background-image:linear-gradient(135deg,${p.hue})">
       <img class="pimg" src="${p.img}" alt="${p.name} bouquet" loading="lazy" onerror="this.remove()">
@@ -438,19 +508,14 @@ grid.innerHTML = products.map(p=>`
       <div class="price">$${p.price}</div>
       <div class="add">Add to Cart</div>
     </div>
-  </div>`).join('');
-
-/* hero photos (real arrangements, fall back to gradient on error) */
-(function(){
-  const h1=document.getElementById('heroimg1'), h2=document.getElementById('heroimg2');
-  h1.style.backgroundImage="linear-gradient(135deg,#e3a9b4,#caa39c)";
-  h2.style.backgroundImage="linear-gradient(135deg,#a9c79a,#6f8a6b)";
-  [[h1,EF+"sku15080083.jpg"],[h2,EF+"skusku14582396.jpg"]].forEach(([el,src])=>{
-    const im=new Image();
-    im.onload=()=>{el.style.backgroundImage=`url('${src}')`;};
-    im.src=src;
-  });
-})();
+  </div>`;}
+function renderProducts(filter){
+  const list = products.filter(p =>
+    filter==="under75" ? parseFloat(p.price) < 75 : p.cats.includes(filter)
+  );
+  grid.innerHTML = list.map(cardHTML).join('');
+}
+renderProducts("best");
 
 /* ---------- FAQ accordion ---------- */
 const faqs = [
@@ -522,6 +587,7 @@ function scrollTop(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth
 document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',function(){
   document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
   this.classList.add('active');
+  renderProducts(this.dataset.filter);
 }));
 </script>
 </body>
